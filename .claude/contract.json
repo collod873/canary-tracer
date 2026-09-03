@@ -1,0 +1,30 @@
+{
+  "stop": {
+    "cmd": null,
+    "why": "no Stop hook in .claude/settings.json, and no turn-end check at .claude/hooks/stop-gate.sh"
+  },
+  "test": {
+    "cmd": "npm test",
+    "why": "package.json#scripts.test (node --test)"
+  },
+  "test_one": {
+    "cmd": null,
+    "why": "no known single-file form for the installed test runner"
+  },
+  "test_related": {
+    "cmd": null,
+    "why": "no known related-tests form for the installed test runner"
+  },
+  "typecheck": {
+    "cmd": "npm run typecheck",
+    "why": "package.json#scripts.typecheck (true)"
+  },
+  "lint": {
+    "cmd": "npm run lint",
+    "why": "package.json#scripts.lint (true)"
+  },
+  "all": {
+    "cmd": null,
+    "why": "no aggregate script found among package.json#scripts.{check,verify,ci}"
+  }
+}

@@ -33,3 +33,4 @@ jobs:
     uses: collod873/claude-workflow/.github/workflows/verify.yml@canary/tracer
     with:
       runner: canary
+      machine_ref: canary/tracer

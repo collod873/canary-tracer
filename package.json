@@ -3,7 +3,7 @@
   "private": true,
   "description": "The smallest honest target: three contract slots and one test, so the machine has something to check that is provably not itself.",
   "engines": {
-    "node": "24"
+    "node": "24.x"
   },
   "scripts": {
     "typecheck": "true",

@@ -17,12 +17,12 @@ function readManifest(): Manifest {
 }
 
 // package.json declares engines.node as exactly "24.x" - check: `jq -e '.engines.node == "24.x"' package.json`
-test.fails('#50: package.json declares engines.node as exactly "24.x"', () => {
+test('#50: package.json declares engines.node as exactly "24.x"', () => {
   expect(readManifest().engines?.node).toBe("24.x");
 });
 
 // package.json remains valid JSON with no other fields changed - check: `jq -e '.name == "canary-tracer" and .scripts.test == "node --test"' package.json`
-test.fails("#50: package.json remains valid JSON with no other fields changed", () => {
+test("#50: package.json remains valid JSON with no other fields changed", () => {
   const manifest = readManifest();
 
   expect(manifest.name).toBe("canary-tracer");

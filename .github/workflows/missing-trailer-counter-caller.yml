@@ -14,5 +14,5 @@ jobs:
       issues: write
     uses: collod873/claude-workflow/.github/workflows/missing-trailer-counter.yml@canary/tracer
     with:
-      runner: canary
+      runner: ubuntu-latest
       machine_ref: canary/tracer

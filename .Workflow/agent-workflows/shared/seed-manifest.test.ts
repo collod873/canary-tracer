@@ -28,12 +28,12 @@ function readSeedManifest(): SeedManifest {
 }
 
 // - [ ] `package.json` declares `engines.node` as the exact string "24" - check: `jq -e '.engines.node == "24"' package.json`
-test.fails('#107: package.json declares engines.node as the exact string "24"', () => {
+test('#107: package.json declares engines.node as the exact string "24"', () => {
   expect(readSeedManifest().engines?.node).toBe("24");
 });
 
 // - [ ] `package.json` stays valid JSON with its existing `scripts` block intact - check: `jq -e '.scripts.test == "node --test"' package.json`
-test.fails("#107: package.json stays valid JSON with its existing scripts block intact", () => {
+test("#107: package.json stays valid JSON with its existing scripts block intact", () => {
   const source = readSeedManifestSource();
   expect(() => JSON.parse(source)).not.toThrow();
 

@@ -1,0 +1,13 @@
+{
+  "name": "canary-tracer",
+  "private": true,
+  "description": "The smallest honest target: three contract slots and one test, so the machine has something to check that is provably not itself.",
+  "engines": {
+    "node": "24"
+  },
+  "scripts": {
+    "typecheck": "true",
+    "lint": "true",
+    "test": "node --test"
+  }
+}

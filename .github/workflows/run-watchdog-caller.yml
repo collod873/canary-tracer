@@ -12,5 +12,5 @@ jobs:
       issues: write
     uses: collod873/claude-workflow/.github/workflows/run-watchdog.yml@canary/tracer
     with:
-      runner: canary
+      runner: ubuntu-latest
       machine_ref: canary/tracer

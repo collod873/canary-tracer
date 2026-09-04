@@ -1,0 +1,17 @@
+name: Ratify
+
+"on":
+  repository_dispatch:
+    types: [ratification-due]
+
+jobs:
+  ratify:
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    uses: collod873/claude-workflow/.github/workflows/ratify.yml@canary/tracer
+    with:
+      runner: ubuntu-latest
+      machine_ref: canary/tracer
+    secrets: inherit

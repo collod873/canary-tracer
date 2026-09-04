@@ -1,0 +1,16 @@
+name: To-Tickets
+
+"on":
+  repository_dispatch:
+    types: [prd-sliceable]
+
+jobs:
+  to-tickets:
+    permissions:
+      contents: write
+      issues: write
+    uses: collod873/claude-workflow/.github/workflows/to-tickets.yml@canary/tracer
+    with:
+      runner: ubuntu-latest
+      machine_ref: canary/tracer
+    secrets: inherit

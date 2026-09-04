@@ -10,5 +10,5 @@ jobs:
       contents: write
     uses: collod873/claude-workflow/.github/workflows/ratify-release.yml@canary/tracer
     with:
-      runner: canary
+      runner: ubuntu-latest
       machine_ref: canary/tracer

@@ -1,0 +1,16 @@
+name: Audit
+
+"on":
+  repository_dispatch:
+    types: [session-captured]
+
+jobs:
+  audit:
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: collod873/claude-workflow/.github/workflows/audit.yml@canary/tracer
+    with:
+      runner: ubuntu-latest
+      machine_ref: canary/tracer
+    secrets: inherit

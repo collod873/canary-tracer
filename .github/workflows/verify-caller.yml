@@ -17,5 +17,5 @@ jobs:
       pull-requests: read
     uses: collod873/claude-workflow/.github/workflows/verify.yml@canary/tracer
     with:
-      runner: canary
+      runner: ubuntu-latest
       machine_ref: canary/tracer

@@ -10,7 +10,7 @@ function readRootPackageJson(): Record<string, unknown> {
 }
 
 // package.json at the repository root has an engines.node field naming 24.
-test.fails("#101: package.json at the repository root has an engines.node field naming 24", () => {
+test("#101: package.json at the repository root has an engines.node field naming 24", () => {
   const pkg = readRootPackageJson();
   const engines = pkg.engines as Record<string, unknown> | undefined;
 

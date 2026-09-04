@@ -7,7 +7,7 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../
 const reentryGuard = "CANARY_TRACER_101_NPM_TEST";
 
 // npm test still passes.
-test.fails("#101: npm test still passes", () => {
+test("#101: npm test still passes", () => {
   if (process.env[reentryGuard] === "1") {
     throw new Error("#101: refusing to re-enter npm test");
   }

@@ -1,0 +1,18 @@
+name: Acceptance
+
+"on":
+  issues:
+    types: [edited]
+  repository_dispatch:
+    types: [acceptance-wanted]
+
+jobs:
+  acceptance:
+    permissions:
+      contents: write
+      issues: write
+    uses: collod873/claude-workflow/.github/workflows/acceptance.yml@canary/tracer
+    with:
+      runner: ubuntu-latest
+      machine_ref: canary/tracer
+    secrets: inherit

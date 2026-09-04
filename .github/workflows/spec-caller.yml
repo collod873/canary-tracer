@@ -13,6 +13,6 @@ jobs:
       issues: write
     uses: collod873/claude-workflow/.github/workflows/spec.yml@canary/tracer
     with:
-      runner: canary
+      runner: ubuntu-latest
       machine_ref: canary/tracer
     secrets: inherit

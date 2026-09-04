@@ -1,0 +1,19 @@
+name: Dispatch reconcile
+
+"on":
+  repository_dispatch:
+    types: [session-captured, graph-changed]
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+
+jobs:
+  reconcile:
+    permissions:
+      contents: write
+      issues: write
+    uses: collod873/claude-workflow/.github/workflows/dispatch-reconcile.yml@canary/tracer
+    with:
+      runner: canary
+      machine_ref: canary/tracer
+      verify_workflow: verify-caller.yml

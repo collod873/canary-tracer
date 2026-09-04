@@ -1,0 +1,14 @@
+name: Ratify release
+
+"on":
+  pull_request:
+    types: [closed]
+
+jobs:
+  ratify-release:
+    permissions:
+      contents: write
+    uses: collod873/claude-workflow/.github/workflows/ratify-release.yml@canary/tracer
+    with:
+      runner: canary
+      machine_ref: canary/tracer

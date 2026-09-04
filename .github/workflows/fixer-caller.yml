@@ -1,0 +1,35 @@
+name: Fixer
+
+"on":
+  workflow_run:
+    workflows: ["Verify"]
+    types: [completed]
+  repository_dispatch:
+    types: [fixer-needed]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "A completed Verify run to react to. Empty resolves no pull request and exits."
+        required: false
+        default: ""
+
+jobs:
+  fixer:
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      actions: read
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.action == 'fixer-needed' ||
+      ((github.event.workflow_run.conclusion == 'failure' ||
+      github.event.workflow_run.conclusion == 'cancelled') &&
+      github.event.workflow_run.event != 'push')
+    uses: collod873/claude-workflow/.github/workflows/fixer.yml@canary/tracer
+    with:
+      runner: canary
+      machine_ref: canary/tracer
+      run_id: ${{ github.event.workflow_run.id || github.event.client_payload.run_id || github.event.inputs.run_id }}
+      test_dir: .Workflow
+    secrets: inherit

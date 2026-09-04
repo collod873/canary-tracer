@@ -1,0 +1,15 @@
+name: Ratify on PRD close
+
+"on":
+  issues:
+    types: [closed]
+
+jobs:
+  ratify-on-prd-close:
+    permissions:
+      contents: write
+      issues: read
+    uses: collod873/claude-workflow/.github/workflows/ratify-on-prd-close.yml@canary/tracer
+    with:
+      runner: canary
+      machine_ref: canary/tracer

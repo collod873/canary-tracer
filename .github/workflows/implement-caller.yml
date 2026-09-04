@@ -1,0 +1,17 @@
+name: Implement
+
+"on":
+  repository_dispatch:
+    types: [ticket-ready]
+
+jobs:
+  implement:
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    uses: collod873/claude-workflow/.github/workflows/implement.yml@canary/tracer
+    with:
+      runner: ubuntu-latest
+      machine_ref: canary/tracer
+    secrets: inherit

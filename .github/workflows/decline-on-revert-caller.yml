@@ -13,5 +13,5 @@ jobs:
       contents: write
     uses: collod873/claude-workflow/.github/workflows/decline-on-revert.yml@canary/tracer
     with:
-      runner: canary
+      runner: ubuntu-latest
       machine_ref: canary/tracer

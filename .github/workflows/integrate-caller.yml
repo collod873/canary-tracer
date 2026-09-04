@@ -13,6 +13,6 @@ jobs:
       actions: read
     uses: collod873/claude-workflow/.github/workflows/integrate.yml@canary/tracer
     with:
-      runner: canary
+      runner: ubuntu-latest
       machine_ref: canary/tracer
       verify_workflow: verify-caller.yml

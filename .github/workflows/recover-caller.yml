@@ -27,6 +27,6 @@ jobs:
       github.event.workflow_run.conclusion == 'cancelled'
     uses: collod873/claude-workflow/.github/workflows/recover.yml@canary/tracer
     with:
-      runner: canary
+      runner: ubuntu-latest
       machine_ref: canary/tracer
       run_id: ${{ github.event.workflow_run.id || github.event.client_payload.run_id || github.event.inputs.run_id }}

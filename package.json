@@ -1,10 +1,52 @@
 {
-  "name": "canary-tracer",
+  "name": "claude-workflow",
   "private": true,
-  "description": "The smallest honest target: three contract slots and one test, so the machine has something to check that is provably not itself.",
+  "type": "module",
+  "engines": {
+    "node": "24"
+  },
   "scripts": {
-    "typecheck": "true",
-    "lint": "true",
-    "test": "node --test"
+    "prepare": "husky",
+    "test": "vitest run .Workflow .claude",
+    "clones": "jscpd",
+    "gauntlet": "bin/gauntlet",
+    "check": "bin/gauntlet push",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . && knip && depcruise --config .dependency-cruiser.cjs .Workflow/agent-workflows"
+  },
+  "dependencies": {
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.25.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "dependency-cruiser": "^18.2.0",
+    "eslint": "^10.9.0",
+    "eslint-plugin-sonarjs": "^4.2.0",
+    "husky": "^9.1.7",
+    "jscpd": "^4.3.0",
+    "knip": "^6.33.0",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.67.0",
+    "vitest": "^4.1.11",
+    "yaml": "^2.9.0"
+  },
+  "jscpd": {
+    "threshold": 0,
+    "format": [
+      "typescript"
+    ],
+    "minTokens": 50,
+    "minLines": 5,
+    "gitignore": true,
+    "ignore": [
+      "**/node_modules/**",
+      ".claude/worktrees/**"
+    ],
+    "reporters": [
+      "consoleFull"
+    ],
+    "absolute": true
   }
 }

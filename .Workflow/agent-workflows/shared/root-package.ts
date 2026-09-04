@@ -1,8 +1,9 @@
-export type RootPackageManifest = {
+export type RootPackage = {
+  name?: string;
   engines?: { node?: string };
-  scripts?: Record<string, string>;
+  [key: string]: unknown;
 };
 
-export function readRootPackageManifest(): RootPackageManifest {
-  throw new Error("#78: not built");
+export function readRootPackage(): RootPackage {
+  throw new Error("#90: not built");
 }

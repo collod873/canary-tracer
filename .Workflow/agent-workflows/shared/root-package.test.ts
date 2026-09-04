@@ -1,17 +1,16 @@
 import { expect, test } from "vitest";
-import { readRootPackageManifest } from "./root-package";
+import { readRootPackage } from "./root-package";
 
-// package.json at the repository root has an engines.node field naming 24.
-test.fails("#78: package.json at the repository root has an engines.node field naming 24", () => {
-  const manifest = readRootPackageManifest();
-  expect(manifest.engines).toBeDefined();
-  expect(typeof manifest.engines?.node).toBe("string");
-  expect(manifest.engines?.node).toMatch(/24/);
+// package.json, rooted at the repository root, declares an engines.node field naming Node 24 - check: `jq -e '.engines.node | test("24")' package.json`
+test.fails("#90: package.json at the repository root declares an engines.node field naming Node 24", () => {
+  const pkg = readRootPackage();
+  expect(pkg.engines).toBeDefined();
+  expect(pkg.engines?.node).toMatch(/24/);
 });
 
-// npm test still passes.
-test.fails("#78: npm test still passes", () => {
-  const manifest = readRootPackageManifest();
-  expect(typeof manifest.scripts?.test).toBe("string");
-  expect((manifest.scripts?.test ?? "").length).toBeGreaterThan(0);
+// package.json remains valid JSON with its existing name field preserved after the edit - check: `jq -e '.name == "canary-tracer"' package.json`
+test.fails("#90: package.json remains valid JSON with its existing name field preserved", () => {
+  const pkg = readRootPackage();
+  expect(pkg).toBeTypeOf("object");
+  expect(pkg.name).toBe("canary-tracer");
 });

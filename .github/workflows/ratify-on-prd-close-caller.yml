@@ -11,5 +11,5 @@ jobs:
       issues: read
     uses: collod873/claude-workflow/.github/workflows/ratify-on-prd-close.yml@canary/tracer
     with:
-      runner: canary
+      runner: ubuntu-latest
       machine_ref: canary/tracer

@@ -1,0 +1,17 @@
+name: Decline on revert
+
+"on":
+  push:
+    branches: [main]
+    paths:
+      - "CODING_STANDARDS.md"
+      - "eslint.config.js"
+
+jobs:
+  decline:
+    permissions:
+      contents: write
+    uses: collod873/claude-workflow/.github/workflows/decline-on-revert.yml@canary/tracer
+    with:
+      runner: canary
+      machine_ref: canary/tracer

@@ -13,6 +13,6 @@ jobs:
     if: github.event.label.name == 'sliceable'
     uses: collod873/claude-workflow/.github/workflows/lost-dispatch-counter.yml@canary/tracer
     with:
-      runner: canary
+      runner: ubuntu-latest
       machine_ref: canary/tracer
       slicing_workflow: to-tickets-caller.yml
